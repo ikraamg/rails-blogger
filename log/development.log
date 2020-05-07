@@ -8055,3 +8055,172 @@ Processing by ArticlesController#index as HTML
 Completed 200 OK in 58ms (Views: 56.5ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/articles" for ::1 at 2020-05-07 14:29:23 +0200
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ikraam/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 299ms (Views: 259.2ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/articles/new" for ::1 at 2020-05-07 14:29:25 +0200
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (35.3ms)
+  Rendered articles/new.html.erb within layouts/application (36.8ms)
+Completed 200 OK in 147ms (Views: 145.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2020-05-07 14:29:30 +0200
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Y3ZeWdzVdna1r+0xhaj1xEZu2MW/tMkEtfLsc1kDeVoFafMM3L+2a7UWAAV76FZ1NUBXxCZ/n215qBunjA7bwQ==", "article"=>{"title"=>"asdf", "body"=>"fasdf", "tag_list"=>"asdf", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007f6f0c893f50 @tempfile=#<Tempfile:/tmp/RackMultipart20200507-8923-mgebmu.png>, @original_filename="Home large.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"article[image]\"; filename=\"Home large.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Article"}
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? LIMIT ?[0m  [["name", "asdf"], ["LIMIT", 1]]
+  ↳ app/models/article.rb:18
+[paperclip] Trying to link /tmp/RackMultipart20200507-8923-mgebmu.png to /tmp/ac937a3e420b7b138cc21498191b7fa320200507-8923-1aqusp2.png
+[paperclip] Trying to link /tmp/ac937a3e420b7b138cc21498191b7fa320200507-8923-1aqusp2.png to /tmp/f2078a445ef04567a35e8c230c6db6a520200507-8923-sxr57e.png
+Command :: file -b --mime '/tmp/f2078a445ef04567a35e8c230c6db6a520200507-8923-sxr57e.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/ac937a3e420b7b138cc21498191b7fa320200507-8923-1aqusp2.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/ac937a3e420b7b138cc21498191b7fa320200507-8923-1aqusp2.png[0]'
+Command :: convert '/tmp/ac937a3e420b7b138cc21498191b7fa320200507-8923-1aqusp2.png[0]' -auto-orient -resize "300x300>" '/tmp/c17e97efa748475c8638db6a5f21dd2820200507-8923-ar841n'
+[paperclip] Trying to link /tmp/c17e97efa748475c8638db6a5f21dd2820200507-8923-ar841n to /tmp/87c137b52ee70c759786e442ba95fa4a20200507-8923-9terrq
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/ac937a3e420b7b138cc21498191b7fa320200507-8923-1aqusp2.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/ac937a3e420b7b138cc21498191b7fa320200507-8923-1aqusp2.png[0]'
+Command :: convert '/tmp/ac937a3e420b7b138cc21498191b7fa320200507-8923-1aqusp2.png[0]' -auto-orient -resize "100x100>" '/tmp/c17e97efa748475c8638db6a5f21dd2820200507-8923-1do03wi'
+[paperclip] Trying to link /tmp/c17e97efa748475c8638db6a5f21dd2820200507-8923-1do03wi to /tmp/743489f236aad8d1cf9b3b1d9247644f20200507-8923-1d7p60i
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+[paperclip] Trying to link /tmp/ac937a3e420b7b138cc21498191b7fa320200507-8923-1aqusp2.png to /tmp/f2078a445ef04567a35e8c230c6db6a520200507-8923-kwvxv0.png
+Command :: file -b --mime '/tmp/f2078a445ef04567a35e8c230c6db6a520200507-8923-kwvxv0.png'
+  [1m[36mArticle Create (0.6ms)[0m  [1m[32mINSERT INTO "articles" ("title", "body", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "asdf"], ["body", "fasdf"], ["created_at", "2020-05-07 12:29:31.351818"], ["updated_at", "2020-05-07 12:29:31.351818"], ["image_file_name", "Home_large.png"], ["image_content_type", "image/png"], ["image_file_size", 342348], ["image_updated_at", "2020-05-07 12:29:31.036318"]]
+  ↳ app/controllers/articles_controller.rb:23
+  [1m[36mTagging Create (0.4ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "article_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 8], ["article_id", 6], ["created_at", "2020-05-07 12:29:31.355441"], ["updated_at", "2020-05-07 12:29:31.355441"]]
+  ↳ app/controllers/articles_controller.rb:23
+  [1m[35m (24.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+Redirected to http://localhost:3000/articles/6
+Completed 302 Found in 406ms (ActiveRecord: 27.6ms)
+
+
+Started GET "/articles/6" for ::1 at 2020-05-07 14:29:31 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:11
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 6]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 6]]
+  ↳ app/views/articles/show.html.erb:15
+  Rendered collection of articles/_comment.html.erb [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (6.4ms)
+  Rendered articles/show.html.erb within layouts/application (25.7ms)
+Completed 200 OK in 97ms (Views: 80.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/articles/6/edit" for ::1 at 2020-05-07 14:29:34 +0200
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29
+  Rendering articles/edit.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 6]]
+  ↳ app/models/article.rb:13
+  Rendered articles/_form.html.erb (10.2ms)
+  Rendered articles/edit.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 49ms (Views: 45.5ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/articles/6" for ::1 at 2020-05-07 14:29:37 +0200
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OF+xU7Yd128yFMY/gluQefRmxd2BztnSf2iRenFCJRNfSbcHxksGegn5POTLW/GXnHpIfeoFg1WDukOQb7IY7g==", "article"=>{"title"=>"asdf", "body"=>"fasdf", "tag_list"=>"asdf"}, "commit"=>"Update Article", "id"=>"6"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:33
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:34
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? LIMIT ?[0m  [["name", "asdf"], ["LIMIT", 1]]
+  ↳ app/models/article.rb:18
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 6]]
+  ↳ app/models/article.rb:19
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:34
+Redirected to http://localhost:3000/articles/6
+Completed 302 Found in 10ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/articles/6" for ::1 at 2020-05-07 14:29:37 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:11
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 6]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 6]]
+  ↳ app/views/articles/show.html.erb:15
+  Rendered collection of articles/_comment.html.erb [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (2.8ms)
+  Rendered articles/show.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 67ms (Views: 64.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/articles" for ::1 at 2020-05-07 14:29:38 +0200
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (3.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 50ms (Views: 45.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/tags" for ::1 at 2020-05-07 14:29:40 +0200
+Processing by TagsController#index as HTML
+  Rendering tags/index.html.erb within layouts/application
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags"[0m
+  ↳ app/views/tags/index.html.erb:2
+  Rendered tags/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 59ms (Views: 57.1ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/tags/7" for ::1 at 2020-05-07 14:29:41 +0200
+Processing by TagsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/ra+xxHUb7gK+NDYTudGbjLJswv004v7OvdH1rr+63YpLaP+b5OuirZ7OUCzcr1vgOrngEsQ4fIHrDr1a/s25w==", "id"=>"7"}
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/tags_controller.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tags_controller.rb:14
+  [1m[36mTagging Load (0.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."tag_id" = ?[0m  [["tag_id", 7]]
+  ↳ app/controllers/tags_controller.rb:14
+  [1m[36mTagging Destroy (1.7ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/tags_controller.rb:14
+  [1m[36mTag Destroy (0.2ms)[0m  [1m[31mDELETE FROM "tags" WHERE "tags"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/tags_controller.rb:14
+  [1m[35m (19.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tags_controller.rb:14
+Redirected to http://localhost:3000/tags
+Completed 302 Found in 35ms (ActiveRecord: 22.1ms)
+
+
+Started GET "/tags" for ::1 at 2020-05-07 14:29:42 +0200
+Processing by TagsController#index as HTML
+  Rendering tags/index.html.erb within layouts/application
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags"[0m
+  ↳ app/views/tags/index.html.erb:2
+  Rendered tags/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 38ms (Views: 36.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tags/8" for ::1 at 2020-05-07 14:29:43 +0200
+Processing by TagsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tags_controller.rb:5
+  Rendering tags/show.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" INNER JOIN "taggings" ON "articles"."id" = "taggings"."article_id" WHERE "taggings"."tag_id" = ?[0m  [["tag_id", 8]]
+  ↳ app/views/tags/show.html.erb:4
+  Rendered tags/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 67ms (Views: 64.1ms | ActiveRecord: 0.6ms)
+
+
